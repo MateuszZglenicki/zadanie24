@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.sql.*;
+import java.time.LocalDate;
 
 public class TransactionDao {
 
@@ -12,7 +13,7 @@ public class TransactionDao {
             preparedStatement.setString(1, transaction.getType());
             preparedStatement.setString(2, transaction.getDescription());
             preparedStatement.setBigDecimal(3, transaction.getAmount());
-            preparedStatement.setInt(4, transaction.getDate());
+            preparedStatement.setObject(4, transaction.getDate());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Błąd zapisu " + e.getMessage());
@@ -43,7 +44,7 @@ public class TransactionDao {
                 String typeFromDb = resultSet.getString("type");
                 String description = resultSet.getString("description");
                 BigDecimal amount = resultSet.getBigDecimal("amount");
-                int date  = resultSet.getInt("date");
+                LocalDate date  = resultSet.getObject("date");
                 Transaction transaction = new Transaction(id, typeFromDb, description, amount, date);
                 System.out.println(transaction);
             }
@@ -64,7 +65,7 @@ public class TransactionDao {
             preparedStatement.setString(1, transaction.getType());
             preparedStatement.setString(2, transaction.getDescription());
             preparedStatement.setBigDecimal(3, transaction.getAmount());
-            preparedStatement.setInt(4, transaction.getDate());
+            preparedStatement.setObject(4, transaction.getDate());
             preparedStatement.setInt(5, transaction.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

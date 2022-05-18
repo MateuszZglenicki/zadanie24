@@ -1,13 +1,14 @@
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Transaction {
     private Integer id;
     private String type;
     private String description;
     private BigDecimal amount;
-    private Integer date; //zmiana na ty Date?
+    private LocalDate date; //zmiana na ty Date?
 
-    public Transaction(Integer id, String type, String description, BigDecimal amount, Integer date) {
+    public Transaction(Integer id, String type, String description, BigDecimal amount, LocalDate date) {
         this.id = id;
         this.type = type;
         this.description = description;
@@ -15,7 +16,7 @@ public class Transaction {
         this.date = date;
     }
 
-    public Transaction(String type, String description, BigDecimal amount, Integer date) {
+    public Transaction(String type, String description, BigDecimal amount, LocalDate date) {
         this.type = type;
         this.description = description;
         this.amount = amount;
@@ -55,11 +56,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Integer getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Integer date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

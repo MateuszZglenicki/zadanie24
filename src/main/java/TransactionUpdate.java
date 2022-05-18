@@ -1,4 +1,6 @@
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class TransactionUpdate {
@@ -13,9 +15,10 @@ public class TransactionUpdate {
         String description = scanner.nextLine();
         System.out.println("Podaj kwotę");
         BigDecimal amount = scanner.nextBigDecimal();
-        System.out.println("Podaj datę");
-        int date = scanner.nextInt();
-        scanner.nextLine();
+        System.out.println("Podaj datę w formacie (yyyy-MM-dd)");
+        DateTimeFormatter datePattern = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String dateInput = scanner.nextLine();
+        LocalDate date = LocalDate.parse(dateInput, datePattern);
 
         Transaction transaction = new Transaction(id, type, description, amount, date);
 
